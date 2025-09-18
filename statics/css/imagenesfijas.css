@@ -1,0 +1,289 @@
+/* ==========================================================================
+   Custom CSS para imágenes responsivas y banners
+   Complemento de la plantilla gob.mx v3
+   ========================================================================== */
+
+/* Imagen genérica responsiva */
+.img-responsive {
+  max-width: 100%;   /* Nunca más grande que su contenedor */
+  height: auto;      /* Mantiene proporción */
+  display: block;    /* Se comporta como bloque */
+  margin: 0 auto;    /* Centrada horizontalmente */
+}
+
+/* Imagen con ancho limitado (ej. logos, fotos pequeñas) */
+.img-limitada {
+  max-width: 600px;  /* Ajusta según tu diseño */
+  width: 100%;       /* Escala hasta el máximo */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Banners grandes que se ajustan al ancho de la pantalla */
+.banner-responsive {
+  width: 100%;       /* Ocupa todo el ancho */
+  height: auto;      /* Ajusta la altura automáticamente */
+  display: block;
+}
+
+/* Opcional: contenedor para mantener proporción 16:9 en imágenes o videos */
+.ratio-16-9 {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.ratio-16-9 img,
+.ratio-16-9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta sin deformar */
+}
+
+/* Instrucciones para las noticias */
+
+.mySwiper {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+}
+
+/* Imagen del slide */
+.mySwiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto sobre la imagen */
+.mySwiper .text {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Bullets afuera del slider */
+.swiper-pagination {
+  position: absolute;   /* todavía absoluto, pero movemos visualmente */
+  bottom: -30px;        /* se mueve hacia abajo fuera del slider */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  background: #999;
+  opacity: 0.7;
+  margin: 0 4px !important;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: #235B4E;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(1.2);
+  background: #a57f2c;
+}
+
+/* Responsivo: cambia altura del slider */
+@media (max-width: 1200px) { .mySwiper { height: 350px; } }
+@media (max-width: 992px) { .mySwiper { height: 300px; } }
+@media (max-width: 768px) { .mySwiper { height: 250px; } }
+@media (max-width: 480px) { .mySwiper { height: 200px; } }
+
+
+/* Instrucciones para el mapa y las redes sociales */
+
+/* Contenedor principal */
+.ubicacion-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Columnas */
+.ubicacion-col {
+    flex: 1 1 350px;
+}
+
+/* Columna de info */
+.info-col .info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Mapa estilo tarjeta */
+.mapa-col iframe {
+    width: 100%;
+    height: 60vh;            /* Altura dinámica según viewport */
+    min-height: 300px;       /* No demasiado pequeña */
+    max-height: 80vh;        /* No demasiado grande */
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+}
+
+/* Redes sociales */
+.redes-sociales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.redes-sociales a {
+    font-size: 24px;
+    color: #1e5b4f;
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: #a57f2c;
+}
+
+/* Titulos */
+.ubicacion-modulo h2 {
+    margin-bottom: 12px;
+}
+
+/* RESPONSIVO: tablets y móviles */
+@media (max-width: 992px) {
+    .ubicacion-container {
+        flex-direction: column; /* Apila mapa y info */
+        gap: 20px;
+    }
+
+    .mapa-col iframe {
+        height: 50vh;
+    }
+
+    .redes-sociales a {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mapa-col iframe {
+        height: 45vh;
+    }
+
+    .redes-sociales a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mapa-col iframe {
+        height: 40vh;
+    }
+
+    .redes-sociales {
+        justify-content: flex-start;
+    }
+
+    .redes-sociales a {
+        font-size: 18px;
+    }
+}
+
+/******** Instrucciones para el formulario ************/
+/* Contenedor principal adaptativo */
+.contacto-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Patria", sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contacto-container input,
+.contacto-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.contacto-container button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #235B4E;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contacto-container button:hover {
+    background-color: #1e4c40;
+}
+
+.contacto-container h2 {
+    margin-bottom: 12px;
+}
+
+/* Responsivo: reduce paddings en móviles */
+@media (max-width: 768px) {
+    .contacto-container {
+        width: 95%;
+        padding: 10px;
+    }
+}
+
+/*************** Formulario *************************/
+/* Contenedor flexible para que el iframe sea responsive */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* puedes ajustarlo a lo que quieras */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1); /* sombra ligera opcional */
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 70vh; /* altura base en pantallas normales */
+}
+
+/* Estilo del iframe */
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .iframe-container {
+        height: 90vh; /* más alto en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .iframe-container {
+        height: 100vh; /* aún más alto en pantallas muy pequeñas */
+    }
+}

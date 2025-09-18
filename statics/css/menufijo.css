@@ -1,0 +1,236 @@
+/* =========================
+   Tipografía
+   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* =========================
+   Menú principal fijo
+   ========================= */
+.navigation {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background-color: #1e5b4f; /* Verde institucional */
+  z-index: 9999;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-container .brand {
+  color: #fff; /* Fuente blanca */
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* =========================
+   Botón hamburguesa
+   ========================= */
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* =========================
+   Menú principal
+   ========================= */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin-left: 20px;
+  position: relative;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  transition: background 0.3s;
+}
+
+.nav-menu a:hover {
+  background-color: #002f2a; /* Verde oscuro hover */
+  border-radius: 4px;
+}
+
+/* =========================
+   Submenús con fade + slide + pop
+   ========================= */
+.nav-menu li ul.nav-child {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #d7d7d7; /* Gris neutro */
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  transform: translateY(-20px) scale(0.95);
+  transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+/* Triángulo animado */
+.nav-menu li ul.nav-child::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent #98989A transparent;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover efecto submenú */
+.nav-menu li:hover > ul.nav-child {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.nav-menu li:hover > ul.nav-child::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu li ul.nav-child li a {
+  padding: 10px 15px;
+  color: #161a1d; /* Negro Neutral C */
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-menu li ul.nav-child li a:hover {
+  background-color: #e6d194; /* Dorado hover */
+  color: #fff;
+}
+
+/* =========================
+   Responsivo (móvil)
+   ========================= */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #1e5b4f;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  .nav-menu.active {
+    max-height: 1000px;
+  }
+
+  .nav-menu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .nav-menu li ul.nav-child {
+    position: relative;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .nav-menu li ul.nav-child.active {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .nav-menu li ul.nav-child li a {
+    padding-left: 30px;
+  }
+
+  .nav-menu li ul.nav-child::before {
+    display: none;
+  }
+}
+
+/* ======= Fix: evitar que el submenú invisible capture clicks ======= */
+
+/* Mover ligeramente el submenú hacia abajo por defecto y desactivar puntero */
+.nav-menu li ul.nav-child {
+  top: calc(100% + 6px);         /* separa visualmente del enlace padre */
+  transform: translateY(6px) scale(0.98); /* empieza un poco abajo */
+  pointer-events: none;          /* no captura clicks cuando está oculto */
+  transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1000;                 /* orden por defecto */
+}
+
+/* Mostrar submenú al hover / focus-within */
+.nav-menu li:hover > ul.nav-child,
+.nav-menu li:focus-within > ul.nav-child {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;          /* permitir interacción cuando está visible */
+}
+
+/* Mantener el enlace padre clickeable cuando el submenú está cerrado,
+   pero bajar su z-index cuando el submenú está abierto para no bloquearlo */
+.nav-menu > li > a {
+  position: relative;
+  z-index: 1100;                 /* por encima del submenú cuando está cerrado */
+}
+
+.nav-menu li:hover > a,
+.nav-menu li:focus-within > a {
+  z-index: 999;                  /* bajar por debajo del submenú al abrir */
+}
+
+/* Accesibilidad: abrir submenú con teclado (focus) */
+.nav-menu li:focus-within > ul.nav-child {
+  pointer-events: auto;
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0) scale(1);
+}
+
+/* Ajustes para móvil (aprovechamos tu clase .active para mostrar submenús) */
+@media (max-width: 768px) {
+  .nav-menu li ul.nav-child {
+    position: relative;
+    top: auto;
+    transform: none;
+    pointer-events: auto; /* en móvil el submenú ya es relativo y debe ser interactivo */
+  }
+}

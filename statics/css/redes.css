@@ -1,0 +1,53 @@
+.fa-brands {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px; /* Tamaño del círculo */
+    height: 45px; /* Tamaño del círculo */
+    font-size: 25px; /* Tamaño del ícono */
+    text-align: center;
+    text-decoration: none; /* Quita el subrayado */
+    margin: 5px; /* Margen alrededor del círculo */
+    border-radius: 50%; /* Hace que el fondo sea circular */
+    color: white; /* Color del ícono */
+    transition: background-color 0.3s ease, opacity 0.3s ease; /* Transiciones suaves para hover */
+}
+
+.fa-brands:link,
+.fa-brands:visited,
+.fa-brands:hover,
+.fa-brands:focus,
+.fa-brands:active {
+    text-decoration: none; /* Quita el subrayado en todos los estados */
+    color: white;
+}
+
+.fa-facebook {
+    background: #1877F2; /* Color sólido de fondo de Facebook */
+}
+.fa-x-twitter {
+    background: #000000; /* Color de fondo de Twitter */
+}
+
+.fa-instagram {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); /* Gradiente de Instagram */
+    background-size: 100% 100%; /* Asegura que el gradiente cubra completamente el círculo */
+}
+
+.fa-whatsapp {
+    background: #25D366; /* Color de fondo de WhatsApp */
+}
+
+.fa-youtube {
+    background: #FF0000; /* Color de fondo de YouTube */
+}
+
+.fa-tiktok {
+    background: #000000; /* Color de fondo de TikTok */
+}
+
+/* Cambia el color de fondo en hover para un efecto visual */
+.fa-brands:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo semitransparente al pasar el ratón */
+    opacity: 0.9; /* Opacidad al pasar el ratón */
+}
